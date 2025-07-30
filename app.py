@@ -129,9 +129,10 @@ def chat():
     msg = request.form["msg"]
     input = msg
     print("User Input:", input)
-    result = qa({"query": input})
+    result = qa.invoke({"query": input})  # ✅ Fixed deprecated call
     print("Response:", result["result"])
     return str(result["result"])
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080, debug=True)
